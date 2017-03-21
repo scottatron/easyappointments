@@ -1,8 +1,5 @@
 FROM php:7.1-apache
 RUN docker-php-ext-install -j$(nproc) mysqli
-COPY php.ini /usr/local/etc/php/
-COPY src /var/www/html
-RUN chown -R www-data: /var/www/html
 RUN apt-get update && apt-get install -y \
         libfreetype6-dev \
         libjpeg62-turbo-dev \
@@ -13,3 +10,6 @@ RUN apt-get install -y git
 RUN apt-get install -y unzip
 RUN docker-php-ext-install -j$(nproc) zip
 RUN docker-php-ext-install -j$(nproc) posix
+COPY php.ini /usr/local/etc/php/
+COPY src /var/www/html
+RUN chown -R www-data: /var/www/html/storage
