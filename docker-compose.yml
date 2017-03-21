@@ -17,5 +17,6 @@ services:
       - db
     volumes:
       - ./:/src
+      - ./php.ini:/usr/local/etc/php/php.ini
 volumes:
   data:
